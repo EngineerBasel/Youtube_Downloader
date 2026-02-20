@@ -27,15 +27,7 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Set Permissions
-        run: chmod +x -R .
-
       - name: Build APK
         run: |
-          python -m flet build apk
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: YouTube-Downloader-APK
-          path: build/apk/*.apk
+          # لاحظ حذف --project لترك الأداة تتعرف على المجلد الحالي تلقائياً
+          python -m flet build apk --verbose
