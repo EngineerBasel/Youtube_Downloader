@@ -30,7 +30,9 @@ jobs:
 
       - name: Build APK
         run: |
-          python -m flet build apk --verbose
+          # تثبيت flet كـ command line tool وتجربة البناء مباشرة
+          pip install flet==0.23.2 yt-dlp
+          flet build apk --verbose
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
