@@ -5,7 +5,7 @@ import threading
 import sys
 import re
 from pathlib import Path
-import flet_ffmpeg
+
 
 
 # --- دالة الوصول للملفات المدمجة داخل الـ EXE ---

@@ -30,12 +30,18 @@ jobs:
 
       - name: Build APK
         run: |
-          # تثبيت flet كـ command line tool وتجربة البناء مباشرة
-          pip install flet==0.23.2 yt-dlp
-          flet build apk --verbose
+          flet build apk --verbose --product "YoutubeDownloader"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: YouTube-Downloader-APK
           path: build/apk/*.apk
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build/apk/*.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
